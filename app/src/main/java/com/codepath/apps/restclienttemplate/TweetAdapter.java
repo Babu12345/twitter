@@ -1,12 +1,15 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +26,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     //pass in tweet array into the adapter to be able to ise
 
     Context context;
-    private List<Tweet> mTweets;
+    List<Tweet> mTweets;
     public TweetAdapter(List<Tweet> tweets){
         mTweets = tweets;
 
@@ -44,12 +47,38 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         // get the data according to the data
         Tweet tweet = mTweets.get(position);
         holder.tvUsername.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
         holder.tvTimestamp.setText(getRelativeTimeAgo(tweet.createAt));
+
+
+        holder.ivreply.setOnClickListener(new AdapterView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//            int position = getAdapterPosition();
+//            Toast.makeText(context, "Cannot Tweet",Toast.LENGTH_SHORT).show();
+
+                 //Make sure that the movie position isn't invalid
+
+
+                // create an intent for the new activity
+                Intent intent = new Intent(context, EditActivity.class);
+
+                //serialize the movie
+
+                intent.putExtra("screen_name", mTweets.get(position).user.screenName);
+                intent.putExtra("uid", mTweets.get(position).uid);
+
+                //show the activity
+                context.startActivity(intent);
+
+
+            }
+        });
+
 
 
         Glide.with(context).load(tweet.user.profileImageUrl).into(holder.ivProfileImage);
@@ -79,25 +108,75 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
         return relativeDate;
     }
 
+
+
+
+    // Clean all elements of the recycler
+    public void clear() {
+        mTweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        mTweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
     //for each row, inflate the layout and cache references into ViewHolder
 
     // create the viewholder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView ivProfileImage;
         public TextView  tvUsername;
         public TextView  tvBody;
         public TextView  tvTimestamp;
+        public ImageButton ivreply;
+
 
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvUsername     = itemView.findViewById(R.id.tvUserName);
             tvBody         = itemView.findViewById(R.id.tvBody);
             tvTimestamp    = itemView.findViewById(R.id.tvTimestamp);
+            ivreply        = itemView.findViewById(R.id.ivreply);
+
+
+
+
+
+
+        }
+
+        @Override
+        public void onClick(View v) {
+//            int position = getAdapterPosition();
+//            Toast.makeText(context, "Cannot Tweet",Toast.LENGTH_SHORT).show();
+
+//            if (position != RecyclerView.NO_POSITION){
+                // Make sure that the movie position isn't invalid
+
+//                Toast.makeText(context, "Cannot Tweet",Toast.LENGTH_SHORT).show();
+//                // get the movie at the position
+//                Tweet tweet = mTweets.get(position);
+//
+//                // create an intent for the new activity
+//                Intent intent = new Intent(context, EditActivity.class);
+//
+//                //serialize the movie
+//                intent.putExtra("screen_name", tweet.user.screenName);
+//
+//                //show the activity
+//                context.startActivity(intent);
+
+
+//            }
         }
     }
 }

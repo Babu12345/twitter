@@ -8,6 +8,8 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
 
+        vectorDrawables.useSupportLibrary = true
+
         // Room schemas
         javaCompileOptions {
             annotationProcessorOptions {
@@ -59,5 +61,9 @@ dependencies {
     implementation 'com.android.support:support-v4:28.0.0'
 
     implementation 'com.android.support:cardview-v7:28.0.0'
+
+    implementation "com.android.support:support-vector-drawable:28.0.0" // VectorDrawableCompat
+    implementation "com.android.support:animated-vector-drawable:28.0.0"
+    // AnimatedVectorDrawableCompat
 
 }

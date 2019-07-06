@@ -51,8 +51,6 @@ public class ComposeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Compose Tweet");
 
 
-//        etCompose = (EditText) findViewById(R.id.etCompose);
-//        etCompose.setText(getIntent().getStringExtra(ITEM_TEXT));
 
 
         client2 = TwitterApp.getRestClient(getApplicationContext());
@@ -79,7 +77,6 @@ public class ComposeActivity extends AppCompatActivity {
 
 
                     Tweet tweet = Tweet.fromJSON(response);
-
 
                     i.putExtra("tweet", Parcels.wrap(tweet));
 

@@ -52,28 +52,28 @@ public class EditActivity extends AppCompatActivity {
                 finish();
 
 
-//                hideProgressBar();
+
             }
 
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-//                hideProgressBar();
+
                 Toast.makeText(getApplicationContext(), "Cannot Tweet",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-//                hideProgressBar();
+
                 Toast.makeText(getApplicationContext(), "Cannot Tweet",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-//                hideProgressBar();
+
                 Toast.makeText(getApplicationContext(), errorResponse.toString(),Toast.LENGTH_SHORT).show();
 
             }

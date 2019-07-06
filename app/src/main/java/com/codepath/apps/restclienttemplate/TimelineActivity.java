@@ -1,7 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -52,10 +54,13 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
+
 
 
         // find the RecyclerView
@@ -80,9 +85,9 @@ public class TimelineActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient(getApplicationContext());
 
 
-//        showProgressBar();
+
         populateTimeline();
-//        hideProgressBar();
+
 
         // Lookup the swipe container view
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
@@ -149,8 +154,7 @@ public class TimelineActivity extends AppCompatActivity {
                    super.onSuccess(statusCode, headers, response);
 
                    Log.d("TwitterClient", response.toString());
-//                   tweetAdapter.clear();
-//                   tweets.clear();
+
 
                    hideProgressBar();
 

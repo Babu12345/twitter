@@ -13,7 +13,7 @@
         android:id="@+id/rvTweet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/twitter_blue_50"
+        android:background="@color/light_gray"
         tools:layout_editor_absoluteX="88dp" />
 
     <android.support.v7.widget.Toolbar

@@ -46,7 +46,7 @@ The following **bonus** features are implemented:
 The following **additional** features are implemented:
 
 * [x] List anything else that you can get done to improve the app functionality!
-    * Added the number of tweets and likes
+    * Added the number of tweets and likes in the details page
 
 ## Video Walkthrough
 

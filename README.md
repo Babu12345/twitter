@@ -47,6 +47,7 @@ The following **additional** features are implemented:
 
 * [x] List anything else that you can get done to improve the app functionality!
     * Added the number of tweets and likes in the details page
+    * Added a cards to the tweets
 
 ## Video Walkthrough
 
